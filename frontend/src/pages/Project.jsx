@@ -1,17 +1,17 @@
 import React from 'react'
 
-function Home() {
+function Project() {
   return (
-   <>
+     <>
    
    <div className="container" style={{
     marginTop:"70px"
    }}>
-    <h1>this is home page</h1>
+    <h1>this is project page</h1>
    </div>
    
    </>
   )
 }
 
-export default Home
+export default Project
