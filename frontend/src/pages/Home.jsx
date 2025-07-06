@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <div className="home-wrapper text-light">
-      <div className="container-fluid py-5">
+      <div className="container">
         {/* Profile Header */}
         <div className="row align-items-center mb-5 profile-section">
           <div className="col-md-8 text-center text-md-start fade-in-right">
