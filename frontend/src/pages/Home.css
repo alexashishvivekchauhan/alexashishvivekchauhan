@@ -59,19 +59,22 @@ html, body, #root {
 
 /* CTA Button */
 .project-btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(to right,blue);
-  border: none;
-  border-radius: 30px;
-
-  transition: transform 0.3s, box-shadow 0.3s;
+   background: #111;
+  border: 2px solid #222;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  text-decoration: none;
+  color: #07c007;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
 }
+
 .project-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px #06831f, 0 0 30px #18aa05;
+  background: #0d1b2a;
+  border-color: #00bfff;
+  box-shadow: 0 0 25px #00bfff;
 }
 
 /* Animations */
@@ -83,28 +86,6 @@ html, body, #root {
 }
 .slide-up {
   animation: slideUp 1s ease-in-out;
-}
-
-
-.profile-section {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.profile-img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid #057f0d;
-  box-shadow: 0 0 20px rgba(0, 255, 153, 0.4);
-  transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.05);
 }
 
 

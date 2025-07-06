@@ -13,13 +13,6 @@ function Home() {
       <div className="container-fluid py-5">
         {/* Profile Header */}
         <div className="row align-items-center mb-5 profile-section">
-          <div className="col-md-4 text-center fade-in-left">
-            <img
-              src="/image/vivek.jpg"
-              alt="Vivek Chauhan"
-              className="img-fluid profile-img shadow"
-            />
-          </div>
           <div className="col-md-8 text-center text-md-start fade-in-right">
             <h1 className="display-5 fw-bold">Vivek Chauhan</h1>
             <p className="lead neon-text">Full Stack Developer | AWS & Cloud Specialist</p>
