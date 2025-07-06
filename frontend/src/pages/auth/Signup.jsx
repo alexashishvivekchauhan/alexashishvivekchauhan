@@ -1,19 +1,12 @@
 import { useState } from "react";
-import { useAuth } from "../../Auth/AuthContext";
-import "./Signup.css";
+import "./Login.css";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import {useAuth} from "../../Auth/AuthContext";
 
 function Signup() {
-  const location = useLocation();
-  const isSecretAccess = location.pathname === "/signup/evermore-indigo17";
-
-  // ⛔ If not accessing through the secret path, redirect to home
-  if (!isSecretAccess) {
-    return <Navigate to="/" replace />;
-  }
 
   const nav = useNavigate();
-  const { signup, user } = useAuth();
+  const { signup } = useAuth();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -69,15 +62,13 @@ function Signup() {
   };
 
   return (
-    <div className="signup-container">
+    <div className="container-fluid" style={{marginTop:"30px"}}>
       <form className="signup-card animated-slide" onSubmit={submit}>
-        <h2 className="text-center mb-4">📋 Add New User</h2>
-        {alertFail && (
-          <div className="alert error animated-fade">{alertFail}</div>
-        )}
+        <h2 className="text-center mb-4">📋 Signup</h2>
+        {alertFail && <div className="alert error animated-fade">{alertFail}</div>}
 
         <div className="form-group">
-          <label>Name(optional)</label>
+          <label>Name (optional)</label>
           <input
             type="text"
             placeholder="Enter full name"
@@ -87,10 +78,10 @@ function Signup() {
         </div>
 
         <div className="form-group">
-          <label>Role(optional)</label>
+          <label>Role (optional)</label>
           <input
             type="text"
-            placeholder="admin/user default=user"
+            placeholder="admin/user (default=user)"
             value={data.role}
             onChange={(e) => setData({ ...data, role: e.target.value })}
           />
@@ -118,7 +109,7 @@ function Signup() {
         </div>
 
         <div className="form-group">
-          <label>Address(optional)</label>
+          <label>Address (optional)</label>
           <input
             type="text"
             placeholder="Enter address"
@@ -139,16 +130,12 @@ function Signup() {
         </div>
 
         <div className="form-group">
-          <label>Profile Photo(optional)</label>
+          <label>Profile Photo (optional)</label>
           <input type="file" accept="image/*" onChange={handlePhoto} />
-          {preview && (
-            <img src={preview} alt="Preview" className="profile-preview" />
-          )}
+          {preview && <img src={preview} alt="Preview" className="profile-preview" />}
         </div>
 
-        <button type="submit" className="submit-btn">
-          Create Account
-        </button>
+        <button type="submit" className="submit-btn">Create Account</button>
       </form>
     </div>
   );

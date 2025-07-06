@@ -19,7 +19,7 @@ function EditProfile() {
   // Fetch user data
   async function userprofile() {
     try {
-      const res = await axios.get("http://localhost:4000/auth");
+      const res = await axios.get("http://localhost:2000/auth");
       const allUsers = res.data;
       const matchedUser = allUsers.find((u) => u._id === user?.id);
       setFormData({
@@ -32,7 +32,7 @@ function EditProfile() {
       });
       setPreview(
         matchedUser.profile
-          ? `http://localhost:4000/profile/${matchedUser.profile}`
+          ? `http://localhost:2000/profile/${matchedUser.profile}`
           : null
       );
     } catch (error) {

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Auth/AuthContext";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { useAuth } from "../../Auth/AuthContext";
 
 function Login() {
   const { login } = useAuth();
@@ -21,45 +21,54 @@ function Login() {
   }
 
   return (
-    <div className="login-container">
-      <div className="login-card animated-slide">
-        <h3 className="login-title">📚 Login to Evermore</h3>
+    <>
+      <div className="container-fluid" style={{ marginTop: "60px" }}>
+        <div className="login-container">
+          <div className="login-card animated-slide">
+            <h3 className="login-title">📚 Login</h3>
 
-        {err && (
-          <div className="login-error animated-fade">
-            <p>{err}</p>
+            {err && (
+              <div className="login-error animated-fade">
+                <p>{err}</p>
+              </div>
+            )}
+
+            <form onSubmit={submit}>
+              <div className="form-group">
+                <input
+                  onChange={(e) => setphone(e.target.value)}
+                  type="text"
+                  className="login-input"
+                  value={phone}
+                  placeholder="📱 Phone Number"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <input
+                  onChange={(e) => setpassword(e.target.value)}
+                  type="password"
+                  className="login-input"
+                  value={password}
+                  placeholder="🔐 Password"
+                  required
+                />
+              </div>
+              <div className="signup-link-container">
+                <NavLink to="/signup" className="signup-link">
+                  Don’t have an account? Sign up
+                </NavLink>
+              </div>
+
+              <button type="submit" className="login-btn">
+                🔓 Submit
+              </button>
+            </form>
           </div>
-        )}
-
-        <form onSubmit={submit}>
-          <div className="form-group mb-3">
-            <input
-              onChange={(e) => setphone(e.target.value)}
-              type="text"
-              className="form-control login-input"
-              value={phone}
-              placeholder="📱 Phone Number"
-              required
-            />
-          </div>
-
-          <div className="form-group mb-4">
-            <input
-              onChange={(e) => setpassword(e.target.value)}
-              type="password"
-              className="form-control login-input"
-              value={password}
-              placeholder="🔐 Password"
-              required
-            />
-          </div>
-
-          <button type="submit" className="btn login-btn w-100">
-            🔓 Submit
-          </button>
-        </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -14,7 +14,7 @@ function Profile() {
 
   async function userprofile() {
     try {
-      const res = await axios.get("http://localhost:4000/auth");
+      const res = await axios.get("http://localhost:2000/auth");
       const allUsers = res.data;
       const matchedUser = allUsers.find((u) => u._id === user?.id);
       setFuser(matchedUser);

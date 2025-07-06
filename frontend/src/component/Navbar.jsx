@@ -14,7 +14,6 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useAuth } from "../Auth/AuthContext";
-import logo from "../images/logo/logo.png";
 
 function Navbar() {
   const nav = useNavigate();
@@ -37,84 +36,59 @@ function Navbar() {
 
   return (
     <>
-      {/* Top Navbar */}
-      <nav className="navbar-custom">
-        <button
-          className="mobile-toggle"
-          onClick={() => setSidebarOpen(!isSidebarOpen)}
-        >
-          {isSidebarOpen ? <FaTimes /> : <FaBars />}
-        </button>
+      <nav className="navbar-custom green-theme">
+        <div className="navbar-container">
+          <button
+            className="mobile-toggle"
+            onClick={() => setSidebarOpen(!isSidebarOpen)}
+          >
+            {isSidebarOpen ? <FaTimes /> : <FaBars />}
+          </button>
 
-        <div className="logo-section">
-          <NavLink to="/">
-            <img src={logo} alt="Logo" className="logo" />
-          </NavLink>
-        </div>
+          <div className="logo-section">
+            <NavLink to="/" className="animated-logo">
+              AAVRC
+            </NavLink>
+          </div>
 
-        {/* menues */}
-        <div className="menu-section">
           <ul className="nav-links">
             <li>
               <NavLink to="/" className="nav-item-link">
-                <FaHome style={{ color: "green" }} /> Home
+                <FaHome /> Home
               </NavLink>
             </li>
-
-            {isUser && (
-              <>
-                <NavLink
-                  to={`/protected/${user?.id}/admindashboard`}
-                  className="nav-item-link"
-                >
-                  <FaTools style={{ color: "blue" }} /> Dashboard
-                </NavLink>
-              </>
-            )}
-
-            {isAdmin && (
+            {(isUser || isAdmin) && (
               <li>
-                <NavLink
-                  to={`/protected/${user?.id}/admindashboard`}
-                  className="nav-item-link"
-                >
-                  <FaTools style={{ color: "blue" }} /> Dashboard
+                <NavLink to="/" className="nav-item-link">
+                  <FaTools /> Dashboard
                 </NavLink>
               </li>
             )}
-
-            {/* Hover-only Dropdown */}
             <li className="dropdown">
-              <div className="dropdown-ttoggle">
-                <FaUserFriends style={{ color: "grey" }} />
+              <div className="dropdown-toggle">
+                <FaUserFriends />
                 {isAdmin ? `Hello, Admin` : isUser ? `Hello, User` : "Account"}
                 <FaChevronDown className="chevron-icon" />
               </div>
-
               <ul className="dropdown-menu">
                 {!isAuthenticated && (
-                  <>
-                    <li>
-                      <NavLink to="/login" className="dropdown-item">
-                        <FaUserCircle /> Login
-                      </NavLink>
-                    </li>
-                  </>
+                  <li>
+                    <NavLink to="/login" className="dropdown-item">
+                      <FaUserCircle /> Login
+                    </NavLink>
+                  </li>
                 )}
                 {isAuthenticated && (
                   <>
                     <li>
-                      <NavLink
-                        to={`/protected/${user?.id}/profile`}
-                        className="dropdown-item"
-                      >
+                      <NavLink to="/" className="dropdown-item">
                         <FaUserCircle /> Profile
                       </NavLink>
                     </li>
                     {isAdmin && (
                       <li>
                         <NavLink
-                          to="/signup/Alex2235vrc"
+                          to="/signup/evermore-indigo17"
                           className="dropdown-item"
                         >
                           <FaUserPlus /> Add User
@@ -125,57 +99,39 @@ function Navbar() {
                 )}
               </ul>
             </li>
-
             {isAuthenticated && (
               <li>
                 <button className="logout-btn" onClick={handleLogout}>
-                  <FaSignOutAlt style={{ color: "red" }} /> Logout
+                  <FaSignOutAlt /> Logout
                 </button>
               </li>
             )}
           </ul>
-        </div>
 
-        <div className="clock-section">
-          <FaRegClock className="me-2" />
-          {currentTime.toLocaleTimeString()} |{" "}
-          {currentTime.toLocaleDateString()}
+          <div className="clock-section">
+            <FaRegClock className="me-2" />
+            <span>{currentTime.toLocaleTimeString()}</span>
+            <span>|</span>
+            <span>{currentTime.toLocaleDateString()}</span>
+          </div>
         </div>
       </nav>
 
-      {/* Sidebar for mobile only */}
-      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+      {/* Sidebar for mobile */}
+      <div className={`sidebar ${isSidebarOpen ? "open green-theme" : ""}`}>
         <ul className="sidebar-links">
           <li>
             <NavLink to="/" onClick={() => setSidebarOpen(false)}>
               <FaHome /> Home
             </NavLink>
           </li>
-
-          {isUser && (
-            <>
-              <li>
-                <NavLink
-                  to={`/protected/${user?.id}/admindashboard`}
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  <FaTools /> Dashboard
-                </NavLink>
-              </li>
-            </>
-          )}
-
-          {isAdmin && (
+          {(isUser || isAdmin) && (
             <li>
-              <NavLink
-                to={`/protected/${user?.id}/admindashboard`}
-                onClick={() => setSidebarOpen(false)}
-              >
+              <NavLink to="/" onClick={() => setSidebarOpen(false)}>
                 <FaTools /> Dashboard
               </NavLink>
             </li>
           )}
-
           {!isAuthenticated && (
             <li>
               <NavLink to="/login" onClick={() => setSidebarOpen(false)}>
@@ -186,10 +142,7 @@ function Navbar() {
           {isAuthenticated && (
             <>
               <li>
-                <NavLink
-                  to={`/protected/${user?.id}/profile`}
-                  onClick={() => setSidebarOpen(false)}
-                >
+                <NavLink to="/" onClick={() => setSidebarOpen(false)}>
                   <FaUserCircle /> Profile
                 </NavLink>
               </li>
