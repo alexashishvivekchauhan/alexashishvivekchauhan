@@ -9,7 +9,7 @@ function Home() {
   };
 
   return (
-    <div className="home-wrapper text-light" style={{marginTop:"60px"}}>
+    <div className="home-wrapper text-light">
       <div className="container-fluid py-5">
         {/* Profile Header */}
         <div className="row align-items-center mb-5 profile-section">
