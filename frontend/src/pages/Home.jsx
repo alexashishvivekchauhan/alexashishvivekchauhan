@@ -15,7 +15,7 @@ function Home() {
         <div className="row align-items-center mb-5 profile-section">
           <div className="col-md-8 text-center text-md-start fade-in-right">
             <h1 className="display-5 fw-bold">Vivek Chauhan</h1>
-            <p className="lead neon-text">Full Stack Developer | AWS & Cloud Specialist</p>
+            <p className="lead neon-text">Mern Stack Developer | AWS & Cloud Specialist</p>
             <p>
               I develop scalable full-stack applications using MERN, deploy with AWS EC2 & NGINX,
               manage assets in S3, and deliver seamless cloud-first solutions — with performance,
