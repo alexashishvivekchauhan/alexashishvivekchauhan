@@ -5,7 +5,7 @@ function Project() {
     <div className="dashboard-container">
       <div className="dashboard-header">
         <h2>My Projects</h2>
-        <p className="subtitle">Explore My creative tools</p>
+        <p className="subtitle">Explore my creative tools & builds</p>
       </div>
 
       <div className="project-grid">
@@ -14,10 +14,10 @@ function Project() {
           href="http://evermorephotobook.com/#body"
           target="_blank"
           rel="noopener noreferrer"
-          className="project-button"
+          className="project-card"
         >
-          <h3>📘 Flipbook</h3>
-          <p>This is a flipbook creation web application.</p>
+          <h3>📘 Flipbook Album</h3>
+          <p>A cloud-based flipbook album builder with QR sharing & music autoplay.</p>
         </a>
 
         {/* AAVRC Project */}
@@ -25,10 +25,10 @@ function Project() {
           href="https://aavrc.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="project-button"
+          className="project-card"
         >
           <h3>🛒 AAVRC</h3>
-          <p>This is a buy and sell anything platform.</p>
+          <p>A simple buy & sell platform for digital or physical goods.</p>
         </a>
       </div>
     </div>
