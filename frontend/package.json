@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://alexashishvivekchauhan.github.io/alexashishvivekchauhan",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+   "deploy": "gh-pages -d dist -r https://github.com/alexashishvivekchauhan/alexashishvivekchauhan.git"
   },
   "dependencies": {
     "axios": "^1.10.0",
