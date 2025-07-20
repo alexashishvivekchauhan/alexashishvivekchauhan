@@ -1,0 +1,122 @@
+/* === Root container === */
+.dashboard-container {
+  background-color: #000;
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Header === */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInDown 0.6s ease;
+}
+
+.dashboard-header h2 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #05ab3a;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 12px;
+}
+
+.dashboard-header .subtitle {
+  font-size: 1.1rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* === Project grid === */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* === Card === */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #111;
+  border: 2px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 30px 25px;
+  text-align: center;
+  text-decoration: none !important; /* ✅ No underline, forced */
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover,
+.project-card:focus {
+  text-decoration: none !important; /* ✅ No underline on hover/focus */
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, #00bfff33, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+  border-color: #00bfff;
+}
+
+.project-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 14px;
+  color: #05ab3a;
+}
+
+.project-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* === Animation === */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Mobile === */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 80px 15px 40px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 2rem;
+  }
+
+  .project-card {
+    padding: 25px 20px;
+  }
+}
