@@ -11,7 +11,7 @@ function Project() {
       <div className="project-grid">
         {/* Flipbook Project */}
         <a
-          href="http://evermorephotobook.com/#body"
+          href="https://evermoreflipbook.com"
           target="_blank"
           rel="noopener noreferrer"
           className="project-card"
