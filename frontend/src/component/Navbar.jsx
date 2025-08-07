@@ -1,66 +1,102 @@
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import { FaRegClock, FaHome, FaBars, FaTimes } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { FaProjectDiagram } from "react-icons/fa";
+import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+import { useState } from "react";
 
 function Navbar() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const [isProductsOpen, setProductsOpen] = useState(false);
+
   return (
     <>
-      <nav className="navbar-custom green-theme">
-        <div className="navbar-container">
-          <button
-            className="mobile-toggle"
-            onClick={() => setSidebarOpen(!isSidebarOpen)}
-          >
-            {isSidebarOpen ? <FaTimes /> : <FaBars />}
-          </button>
+      <nav className="navbar-custom">
+        <div className="logo-section">
+          <NavLink to="/" className="animated-logo">
+            Alexashishvivekchauhan
+          </NavLink>
+        </div>
 
-          <div className="logo-section">
-            <NavLink to="/" className="animated-logo">
-              Alexashishvivekchauhan
-            </NavLink>
-          </div>
-
+        <div className="menu-section">
           <ul className="nav-links">
             <li>
               <NavLink to="/" className="nav-item-link">
-                <FaHome style={{ color: "green" }} /> Home
+                HOME
               </NavLink>
             </li>
             <li>
-              <NavLink to="/project" className="nav-item-link">
-                <FaProjectDiagram style={{ color: "blue" }} /> Project
+              <NavLink to="/about" className="nav-item-link">
+                ABOUT
+              </NavLink>
+            </li>
+            <li className="nav-item-with-dropdown">
+              <NavLink to="/products" className="nav-item-link">
+                PRODUCTS
+              </NavLink>
+              <ul className="nav-dropdown-menu">
+                <li>
+                  <NavLink to="/project" className="dropdown-item">
+                    PROJECT
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <NavLink to="/contact" className="nav-item-link">
+                CONTACT
               </NavLink>
             </li>
           </ul>
-
-          <div className="clock-section">
-            <FaRegClock className="me-2" />
-            <span>{currentTime.toLocaleTimeString()}</span>
-            <span>|</span>
-            <span>{currentTime.toLocaleDateString()}</span>
-          </div>
         </div>
+
+        <button
+          className="mobile-toggle"
+          onClick={() => setSidebarOpen(!isSidebarOpen)}
+        >
+          {isSidebarOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </nav>
 
-      {/* Sidebar for mobile */}
-      <div className={`sidebar ${isSidebarOpen ? "open green-theme" : ""}`}>
+      {/* Sidebar */}
+      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <ul className="sidebar-links">
           <li>
             <NavLink to="/" onClick={() => setSidebarOpen(false)}>
-              <FaHome style={{ color: "green" }} /> Home
+              HOME
             </NavLink>
           </li>
           <li>
-            <NavLink to="/project" className="nav-item-link">
-              <FaProjectDiagram style={{ color: "blue" }} /> Project
+            <NavLink to="/about" onClick={() => setSidebarOpen(false)}>
+              ABOUT
+            </NavLink>
+          </li>
+
+          {/* PRODUCTS Dropdown */}
+          <li
+            className="sidebar-dropdown-toggle"
+            onClick={() => setProductsOpen(!isProductsOpen)}
+          >
+            PRODUCT LIST
+            <FaChevronDown
+              className={`sidebar-chevron ${isProductsOpen ? "open" : ""}`}
+            />
+          </li>
+          {isProductsOpen && (
+            <ul className="sidebar-submenu">
+              <li>
+                <NavLink to="/products" onClick={() => setSidebarOpen(false)}>
+                  PRODUCTS
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/project" onClick={() => setSidebarOpen(false)}>
+                  PROJECT
+                </NavLink>
+              </li>
+            </ul>
+          )}
+          <li>
+            <NavLink to="/contact" onClick={() => setSidebarOpen(false)}>
+              CONTACT
             </NavLink>
           </li>
         </ul>
