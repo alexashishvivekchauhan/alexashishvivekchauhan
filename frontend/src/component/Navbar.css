@@ -107,6 +107,7 @@
 
 .nav-item-with-dropdown:hover .nav-item-link::after {
   width: 100%;
+  background-color: aqua;
 }
 
 .nav-item-with-dropdown {
